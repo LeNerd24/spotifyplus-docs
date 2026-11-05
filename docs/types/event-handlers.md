@@ -19,3 +19,16 @@ const onShuffle = ({ enabled }: { enabled: boolean }) => SpotifyPlus.log(enabled
 SpotifyPlus.Events.on('shuffleChanged', onShuffle);
 SpotifyPlus.Events.off('shuffleChanged', onShuffle);
 ```
+
+## Android Back
+
+```ts
+interface AndroidBackButtonEvent {
+    surfaceId: string;
+    activityName?: string;
+    readonly defaultPrevented: boolean;
+    preventDefault(): void;
+}
+```
+
+Register with `SpotifyPlus.on('android.backPressed', handler)`, and remove the same handler with `SpotifyPlus.off()`. Call `preventDefault()` synchronously if you want to handle Back yourself. Awaiting work before cancelling is too late. Use `surfaceId` to identify the active surface.

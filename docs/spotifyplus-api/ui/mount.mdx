@@ -1,0 +1,41 @@
+---
+sidebar_label: 'mount()'
+---
+
+# UI.mount()
+
+Opens an extension-owned React root.
+
+## Syntax
+
+```ts
+SpotifyPlus.UI.mount(element: React.ReactNode): Promise<UIRoot>
+```
+
+## Examples
+
+The following example shows how an extension can use this method.
+
+```tsx
+import { SpotifyPlus } from 'spotifyplus';
+import { View, Text } from 'spotifyplus/react';
+
+const root = await SpotifyPlus.UI.mount(<View><Text>Hello!</Text></View>);
+root.render(<View><Text>Updated content</Text></View>);
+```
+
+## Parameters
+
+`element`
+
+The React content to mount.
+
+## Returns
+
+`Promise<UIRoot>`
+
+A handle with `id`, `render(element)`, and `dispose()`.
+
+## Remarks
+
+Pass a React element here. Target methods such as `replace()` take component types instead. Call `render()` to update the root and `dispose()` to close it. Unloading the extension removes its roots automatically. A disposed root cannot render again.

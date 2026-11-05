@@ -7,7 +7,7 @@ import Badge from '@site/src/components/badge';
 
 # Queue.get()
 
-Gets the current queue and its revision.
+Gets the current queue.
 
 ## Syntax
 
@@ -35,11 +35,4 @@ console.log('Queue revision:', snapshot.revision);
 
 `QueueSnapshot`
 
-A snapshot containing current, next, previous, and revision.
-
-## Remarks
-
-Queue entries include occurrence IDs, so duplicate tracks remain distinguishable.
-
-
-This is a synchronous local call. It throws if the queue is not ready or Spotify rejects the operation. Edits acknowledge the local queue change; they do not wait for playback on another device.
+A snapshot containing `current`, `next`, `previous`, and `revision`. `next` contains only manually queued tracks; the current track and history describe the shared playback state.

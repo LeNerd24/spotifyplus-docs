@@ -1,0 +1,35 @@
+---
+sidebar_label: 'start()'
+---
+
+# Platform.SleepTimer.start()
+
+Starts Spotify's sleep timer.
+
+## Syntax
+
+```ts
+SpotifyPlus.Platform.SleepTimer.start(duration: number, unit?: SleepTimerUnit): void
+```
+
+## Examples
+
+The following example shows how an extension can start a timer, without adding a button first.
+
+```ts
+SpotifyPlus.Platform.SleepTimer.start(1.5, 'hours');
+```
+
+## Parameters
+
+`duration`
+
+A duration resolving to a positive whole number of minutes, up to 2,147,483,647 minutes.
+
+`unit`
+
+`minutes` or `hours`. Defaults to `minutes`.
+
+## Remarks
+
+See [Sleep timer types](../../../types/sleep-timer.md).

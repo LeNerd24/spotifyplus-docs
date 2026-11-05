@@ -1,0 +1,31 @@
+---
+sidebar_label: 'list()'
+---
+
+# Platform.SleepTimer.list()
+
+Lists the current sleep timer rows in display order.
+
+## Syntax
+
+```ts
+SpotifyPlus.Platform.SleepTimer.list(): SleepTimerEntry[]
+```
+
+## Examples
+
+The following example shows how an extension can customize the sleep timer.
+
+```ts
+const entries = SpotifyPlus.Platform.SleepTimer.list();
+
+for (const entry of entries) {
+    console.log(entry.id, entry.kind, entry.minutes);
+}
+```
+
+## Returns
+
+`SleepTimerEntry[]`
+
+The current native and extension rows.

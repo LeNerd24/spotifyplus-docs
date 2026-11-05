@@ -244,7 +244,7 @@ To build your native code, you can run `npm run build:native`.
 
 ## Synchronous local APIs
 
-Player controls (`seek`, `play`, `pause`, skips, shuffle, repeat), `Player.getState()`, Queue methods, Library membership and edits, playlist creation and edits, Connect device snapshots, clipboard methods, and Storage reads return directly. Commands return `void`; getters return their value. Native service errors throw synchronously:
+Player controls (`seek`, `play`, `pause`, skips, shuffle, repeat), `Player.getState()`, Queue methods, ordinary UpNext methods, Spotify settings, themes, sleep timer methods, Library membership and edits, playlist creation and edits, Connect device snapshots, clipboard methods, and Storage reads return directly. Commands return `void`; getters return their value. Native service errors throw synchronously:
 
 ```ts
 try {
@@ -259,4 +259,8 @@ try {
 
 Remove `.then()`/`.catch()` chains from local API calls and use `try/catch`. `await` still accepts direct values, but is unnecessary. Calls wait for the local service acknowledgement (local RPCs have a 15-second timeout), while playback, emitted state events, and account synchronization can happen later. Avoid repeated native queries in render functions; read state in effects or event handlers.
 
-Search, Internal metadata, User profile, Library listing, playlist loading with `Playlists.get()`, context playback, and Connect transfer keep their Promises because they may load data or coordinate network work. Native UI launch, inspection, and action calls keep Promises because they run on Android's main thread and may need callbacks from the extension. `Events.emit()` also keeps its Promise so callers can wait for async listeners.
+Search, expanded UpNext reads, Internal metadata, User profile, Library listing, playlist loading with `Playlists.get()`, context playback, and Connect transfer keep their Promises because they may load data or coordinate network work. Native UI launch, inspection, and action calls keep Promises because they run on Android's main thread and may need callbacks from the extension. `Events.emit()` also keeps its Promise so callers can wait for async listeners.
+
+## Calling the API from Java
+
+Your native plugin can also call Spotify APIs and install hooks directly. You do not need to send every operation through your React component. See [Using the Java SDK](./java-sdk.md) for the API, events, hooks, and DexKit.

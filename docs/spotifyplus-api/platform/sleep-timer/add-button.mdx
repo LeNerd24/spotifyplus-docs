@@ -1,0 +1,53 @@
+---
+sidebar_label: 'addButton()'
+---
+
+# Platform.SleepTimer.addButton()
+
+Adds a custom button to Spotify's sleep timer menu.
+
+## Syntax
+
+```ts
+SpotifyPlus.Platform.SleepTimer.addButton(title: string, onPress: () => void | Promise<void>): SleepTimerEntry
+```
+
+## Examples
+
+The following example shows an extension creating a 25 minute sleep timer.
+
+```ts
+SpotifyPlus.Platform.SleepTimer.addButton('Sleep in 25 minutes', () => {
+    SpotifyPlus.Platform.SleepTimer.start(25);
+});
+```
+
+The following example shows a custom button that logs a message. This does not start any timer, but it will show up in the list of timers.
+
+```ts
+SpotifyPlus.Platform.SleepTimer.addButton('Press for a cool message', () => {
+    console.log('I was pressed!');
+});
+```
+
+## Parameters
+
+`title`
+
+The title of the button
+
+`onPress`
+
+The callback to run when the button is pressed. It may return a promise.
+
+## Returns
+
+`SleepTimerEntry`
+
+The new button row.
+
+## Remarks
+
+This will add a button to the list of sleep timers. This does **not** start a timer. This adds a button that you can register a custom callback to. These belong to your extension, and will be removed when your extension gets unloaded. You can move and delete Spotify's original timers, but you cannot edit another extension's timers.
+
+See [Sleep timer types](../../../types/sleep-timer.md).

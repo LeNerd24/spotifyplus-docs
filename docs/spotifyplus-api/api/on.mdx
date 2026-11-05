@@ -20,10 +20,9 @@ Registers a host event handler.
 The following example shows how an extension can keep a scripted surface open when Android Back is pressed.
 
 ```ts
-// Keep a scripted surface open when Android Back is pressed.
 const handleBack = (event: { preventDefault(): void }) => {
-  event.preventDefault();
-  SpotifyPlus.Navigation.back();
+    event.preventDefault();
+    SpotifyPlus.toast('This screen is still open');
 };
 
 SpotifyPlus.on('android.backPressed', handleBack);

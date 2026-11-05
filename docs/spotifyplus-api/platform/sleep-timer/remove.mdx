@@ -1,0 +1,31 @@
+---
+sidebar_label: 'remove()'
+---
+
+# Platform.SleepTimer.remove()
+
+Removes a row from the sleep timer menu.
+
+## Syntax
+
+```ts
+SpotifyPlus.Platform.SleepTimer.remove(id: string): void
+```
+
+## Examples
+
+The following example shows how an extension can customize the sleep timer.
+
+```ts
+SpotifyPlus.Platform.SleepTimer.remove('default:5');
+```
+
+## Parameters
+
+`id`
+
+A current row ID from `list()` or a row your extension added.
+
+## Remarks
+
+You cannot remove other extension's buttons.

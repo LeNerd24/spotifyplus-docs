@@ -75,4 +75,4 @@ function OpenDrawer() {
 
 Opens the main activity's native drawer, including registered extension entries, even when Home is replaced. A `navigation.drawer` replacement still applies. Requires a foreground Spotify activity and ready native launcher; early startup, unsupported layouts, or unavailable activity state reject. Resolution acknowledges launch rather than completion of asynchronous native rendering. Current bindings target Spotify **9.1.82.2160**.
 
-Returning a React element from a registered drawer entry opens an extension-owned screen; `SideDrawer.open()` opens Spotify's drawer itself. To customize that drawer, see [Creating a custom UI page](../guides/custom-ui-page.md#6-rebuild-a-drawer-or-menu-with-native-parts).
+Returning a React element from a registered drawer entry opens an extension-owned screen; `SideDrawer.open()` opens Spotify's drawer itself. To customize that drawer, see [Creating a custom UI page](../guides/custom-ui-page.md#6-create-a-custom-side-drawer-or-context-menu).

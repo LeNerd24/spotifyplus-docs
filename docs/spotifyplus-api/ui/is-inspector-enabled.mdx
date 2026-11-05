@@ -1,0 +1,30 @@
+---
+sidebar_label: 'isInspectorEnabled()'
+---
+
+# UI.isInspectorEnabled()
+
+Gets whether the UI inspector is enabled.
+
+## Syntax
+
+```ts
+SpotifyPlus.UI.isInspectorEnabled(): Promise<boolean>
+```
+
+## Examples
+
+The following example shows how an extension can use this method.
+
+```ts
+const enabled = await SpotifyPlus.UI.isInspectorEnabled();
+console.log(enabled);
+```
+
+## Returns
+
+`Promise<boolean>`
+
+## Remarks
+
+This reads the current inspector state.

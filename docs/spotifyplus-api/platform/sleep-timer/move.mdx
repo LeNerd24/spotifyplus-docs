@@ -1,0 +1,32 @@
+---
+sidebar_label: 'move()'
+---
+
+# Platform.SleepTimer.move()
+
+Moves a sleep timer row.
+
+## Syntax
+
+```ts
+SpotifyPlus.Platform.SleepTimer.move(id: string, beforeId?: string): void
+```
+
+## Examples
+
+The following example shows how an extension can customize the sleep timer.
+
+```ts
+const entry = SpotifyPlus.Platform.SleepTimer.add(25);
+SpotifyPlus.Platform.SleepTimer.move(entry.id, 'default:30');
+```
+
+## Parameters
+
+`id`
+
+The row to move.
+
+`beforeId`
+
+A current row ID to place it before. Omit this to move the row to the end.

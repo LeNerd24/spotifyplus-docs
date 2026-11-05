@@ -13,16 +13,35 @@ The current adapters target Spotify **9.1.82.2160**. Always call `inspect()` on 
 
 | Targets | Supported operations |
 | --- | --- |
-| `home.page`, `search.page`, `library.page` | replace, overlay |
-| `playlist.page`, `album.page`, `artist.page` | replace, overlay |
-| `artist.discography.page`, `settings.page`, `profile.page` | replace, overlay |
-| `nowPlaying.page`, `lyrics.page`, `miniPlayer.root` | replace, overlay |
-| `navigation.drawer`, `contextMenu.root` | replace, before, after, overlay |
-| `contextMenu.header`, `contextMenu.action` | replace, before, after, overlay |
+| `home.page`, `search.page`, `library.page`, `playlist.page`, `album.page`, `artist.page` | replace, overlay |
+| `artist.discography.page`, `settings.page`, `profile.page`, `nowPlaying.page`, `lyrics.page`, `miniPlayer.root` | replace, overlay |
+| `queue.page` | overlay |
+| `navigation.drawer`, `contextMenu.root`, `contextMenu.header`, `contextMenu.action`, `contextMenu.actions` | replace, before, after, overlay |
+| `playlist.header`, `album.header`, `artist.header`, `playlist.actions`, `album.actions`, `artist.actions` | replace, before, after, overlay on Compose instances |
+| `library.header`, `library.filters`, `search.field`, `search.filters`, `search.results` | replace, before, after, overlay on Compose instances |
+| `lyrics.header`, `lyrics.content`, `lyrics.line`, `navigation.bar`, `navigation.item` | replace, before, after, overlay |
+| `home.header`, `home.section`, `home.item`, `search.item`, `library.list`, `library.item` | overlay |
+| `playlist.section`, `playlist.list`, `playlist.item`, `album.section`, `album.list`, `album.item`, `artist.section`, `artist.list`, `artist.item` | overlay |
+| `nowPlaying.header`, `nowPlaying.artwork`, `nowPlaying.trackInfo`, `nowPlaying.controls`, `nowPlaying.seekBar`, `nowPlaying.card` | overlay |
+| `miniPlayer.artwork`, `miniPlayer.trackInfo`, `miniPlayer.controls`, `queue.header`, `queue.content`, `queue.item` | overlay |
 
-Page targets preserve Spotify's outer navigation and fragment/activity boundaries. They do not replace the entire app. The mini-player adapter targets its non-embedded content. Unsupported container variants keep Spotify's UI.
+All 61 built-in target names now have adapters in this Spotify version. Availability still depends on the installed hooks and screen variant. Native Android regions stay in Spotify's parent layout and support overlays. Some targets also have Compose adapters with replacement and insertion support; a native instance of the same target can still support only overlays. Check the operation on your installed build and test the screen variant you use.
 
-Queue UI, the navigation bar, individual page headers/controls/sections, and recycled items currently have no verified adapters. General resource-ID or Compose-tag discovery and extension-owned target adapters are not implemented. The current selector alias is `{ screen: 'nowPlaying.page', resourceId: 'com.spotify.music:id/content' }`; arbitrary selectors do not discover new targets.
+Page targets preserve Spotify's outer navigation and fragment/activity boundaries. They do not replace the entire app. The mini-player adapter targets its non-embedded content.
+
+## Resource selectors
+
+You can also overlay an Android view by resource ID inside a supported screen:
+
+```tsx
+const target = { screen: 'nowPlaying.page', resourceId: 'com.spotify.music:id/cover_art_container', minVisible: 0.85 } as const;
+const info = await SpotifyPlus.UI.inspect(target);
+if (info.available && info.operations.includes('overlay')) {
+    SpotifyPlus.UI.overlay(target, MyOverlay);
+}
+```
+
+`MyOverlay` is your component type. Unless a selector resolves to a built-in region, each matching view gets its own instance and supports only `overlay`. `minVisible` is a fraction from 0 to 1 required to open an instance; once opened, the instance stays until the view is completely off screen. This is useful for the visible page of a carousel. Arbitrary Compose-tag discovery and extension-owned adapters are not implemented.
 
 ## Registration and lifecycle
 
@@ -83,4 +102,4 @@ A `ScrollView` takes one wrapper view containing its rows. [listInstances()](./l
 
 Native content stays visible during asynchronous React startup. Render failures are isolated to contributions; failed replacements fall back to native content. Native commit failures dispose the failed host and restore Spotify. Unsupported targets/operations report an error rather than providing a new adapter.
 
-Use `listTargets()` for capabilities, `inspect()` for availability/operations/conflicts, and `listInstances()` for current contexts. A successful build does not verify a Spotify layout: test opening, closing, back navigation, context changes, and restoration on a supported device.
+Use [captureHierarchy()](./capture-hierarchy.mdx) and the [UI inspector](./set-inspector-enabled.mdx) to examine the layout. Use `listTargets()` for capabilities, `inspect()` for availability/operations/conflicts, and `listInstances()` for current contexts. A successful build does not verify a Spotify layout: test opening, closing, back navigation, context changes, and restoration on a supported device.

@@ -1,0 +1,41 @@
+---
+sidebar_label: 'captureHierarchy()'
+---
+
+# UI.captureHierarchy()
+
+Captures the current UI hierarchy.
+
+## Syntax
+
+```ts
+SpotifyPlus.UI.captureHierarchy(options?: { composeLayout?: boolean }): Promise<UIHierarchySnapshot>
+```
+
+## Examples
+
+The following example shows how an extension can use this method.
+
+```ts
+const snapshot = await SpotifyPlus.UI.captureHierarchy();
+console.log(snapshot.activity, snapshot.truncated, snapshot.warnings);
+for (const node of snapshot.nodes) {
+    console.log(node.id, node.className, node.boundsPx, node.properties);
+}
+```
+
+## Parameters
+
+`options.composeLayout`
+
+Whether to capture Compose layout nodes instead of unmerged semantics. Defaults to `false`.
+
+## Returns
+
+`Promise<UIHierarchySnapshot>`
+
+A snapshot of native views and the selected Compose representation. See [UI hierarchy types](../../types/ui-hierarchy.md).
+
+## Remarks
+
+The default captures unmerged Compose semantics. Set `composeLayout: true` to request Compose layout nodes instead. Bounds are pixels. Check `truncated` and `warnings` before assuming the snapshot includes everything. Node IDs describe this snapshot and are not target instance IDs or native part IDs.

@@ -1,0 +1,37 @@
+---
+sidebar_label: 'replace()'
+---
+
+# UpNext.replace()
+
+Replaces the upcoming context order in one operation.
+
+## Syntax
+
+```ts
+SpotifyPlus.UpNext.replace(revision: string, orderedUids: readonly string[], snapshotId?: string): void
+```
+
+## Examples
+
+The following example shows how an extension can reverse Up next without changing manually queued songs.
+
+```ts
+const snapshot = await SpotifyPlus.UpNext.getExpanded();
+const order = snapshot.next.map(entry => entry.uid).reverse();
+SpotifyPlus.UpNext.replace(snapshot.revision, order, snapshot.snapshotId);
+```
+
+## Parameters
+
+`revision`
+
+The snapshot's queue revision.
+
+`orderedUids`
+
+All IDs from `snapshot.next`, in the desired order.
+
+`snapshotId`
+
+The handle from `getExpanded()`, when reordering an expanded snapshot.

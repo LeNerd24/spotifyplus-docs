@@ -1,0 +1,28 @@
+---
+sidebar_label: 'remove()'
+---
+
+# UpNext.remove()
+
+Removes one upcoming context occurrence.
+
+## Syntax
+
+```ts
+SpotifyPlus.UpNext.remove(index: number): void
+```
+
+## Examples
+
+The following example shows how an extension can work with this section of the queue.
+
+```ts
+const snapshot = SpotifyPlus.UpNext.get();
+if (snapshot.next.length > 0) SpotifyPlus.UpNext.remove(0);
+```
+
+## Parameters
+
+`index`
+
+The zero-based index in the latest section's `next` list.

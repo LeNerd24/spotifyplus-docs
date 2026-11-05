@@ -1,0 +1,34 @@
+---
+sidebar_label: 'toggle()'
+---
+
+# Settings.toggle()
+
+Toggles a boolean Spotify setting.
+
+## Syntax
+
+```ts
+SpotifyPlus.Settings.toggle(id: string): boolean
+```
+
+## Examples
+
+The following example shows how an extension can work with Spotify settings.
+
+```ts
+const enabled = SpotifyPlus.Settings.toggle('privateSession');
+SpotifyPlus.toast(`Private session: ${enabled}`);
+```
+
+## Parameters
+
+`id`
+
+The ID of a writable boolean setting.
+
+## Returns
+
+`boolean`
+
+The new value.

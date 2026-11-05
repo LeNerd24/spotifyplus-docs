@@ -4,7 +4,7 @@ sidebar_label: 'Platform data'
 
 # Platform data
 
-`SpotifyPlus.Platform` exposes device information, the current Spotify session, the clipboard, and extension storage.
+`SpotifyPlus.Platform` exposes device information, the current Spotify session, the clipboard, extension storage, and [sleep timer controls](./sleep-timer/start.mdx).
 
 ## PlatformData
 

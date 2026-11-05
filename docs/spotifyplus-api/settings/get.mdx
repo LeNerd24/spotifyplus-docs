@@ -1,0 +1,34 @@
+---
+sidebar_label: 'get()'
+---
+
+# Settings.get()
+
+Gets the current value of a Spotify setting.
+
+## Syntax
+
+```ts
+SpotifyPlus.Settings.get(id: string): SpotifySettingValue
+```
+
+## Examples
+
+The following example shows how an extension can work with Spotify settings.
+
+```ts
+const privateSession = SpotifyPlus.Settings.get('privateSession');
+console.log(privateSession);
+```
+
+## Parameters
+
+`id`
+
+A setting ID from `list()` or a `settingChanged` event.
+
+## Returns
+
+`boolean | number | string`
+
+The current setting value.

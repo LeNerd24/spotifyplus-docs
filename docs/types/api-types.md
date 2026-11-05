@@ -75,6 +75,7 @@ interface PlaylistPage extends Page<PlaylistItem> {
   name: string; 
   description: string; 
   ownedBySelf: boolean;
+  imageUri?: string;
 }
 ```
 
@@ -97,7 +98,26 @@ interface QueueEntry {
 }
 ```
 
-Queue edits use `revision` to detect a change since the snapshot was fetched. Read a fresh snapshot before retrying an edit that was rejected.
+`QueueSnapshot.next` contains manually queued entries. `UpNextSnapshot.next` contains upcoming context entries. Both share the current track and playback history. Index edits read the latest queue internally; you do not pass a snapshot. `UpNext.replace()` uses the revision explicitly.
+
+## UpNextSnapshot
+
+```ts
+interface UpNextSnapshot extends QueueSnapshot {}
+```
+
+## ExpandedUpNextSnapshot
+
+```ts
+interface ExpandedUpNextSnapshot extends UpNextSnapshot {
+    snapshotId: string;
+    contextUri: string;
+    requestedLimit: number;
+    completeness: 'unknown' | 'limit-reached';
+}
+```
+
+`snapshotId` is an opaque handle for an expanded replacement. It expires after 30 seconds or a successful replacement, and can be evicted when the host retains newer snapshots. `completeness` does not confirm that the whole context has been returned.
 
 ## ConnectDevice
 

@@ -1,0 +1,38 @@
+---
+sidebar_label: 'add()'
+---
+
+# UpNext.add()
+
+Adds tracks to the upcoming context order.
+
+## Syntax
+
+```ts
+SpotifyPlus.UpNext.add(items: SpotifyUriInput | SpotifyUriInput[], index?: number): QueueEntry[]
+```
+
+## Examples
+
+The following example shows how an extension can put a track first in Up next.
+
+```ts
+const [added] = SpotifyPlus.UpNext.add('spotify:track:4cOdK2wGLETKBW3PvgPWqT', 0);
+console.log(added.uid);
+```
+
+## Parameters
+
+`items`
+
+A Spotify URI, Spotify URL, object with `uri`, or an array of these.
+
+`index`
+
+An optional zero-based insertion position in Up next.
+
+## Returns
+
+`QueueEntry[]`
+
+The newly created occurrences, including their unique IDs.

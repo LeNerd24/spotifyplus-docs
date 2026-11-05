@@ -82,3 +82,4 @@ void installBadge().catch(console.error);
 This puts the badge on top of the lyrics page whenever the user opens it. Using `lyrics.page` is what tells Spotify Plus that is where you want to put it. You can keep a reference to that overlay in a variable if you want to get rid of it at some point.
 
 If you want to completely change a page, or other parts of Spotify's UI, you can check out [how to create a custom page](./custom-ui-page.md).
+See [React components](../spotifyplus-api/react/components.md) for the component catalog, including bottom sheets, color pickers, lists, and drawing views. For smooth motion, see [Animations and gestures](./animations.md).

@@ -1,0 +1,32 @@
+---
+sidebar_label: 'move()'
+---
+
+# UpNext.move()
+
+Moves one upcoming context occurrence.
+
+## Syntax
+
+```ts
+SpotifyPlus.UpNext.move(index: number, toIndex: number): void
+```
+
+## Examples
+
+The following example shows how an extension can work with this section of the queue.
+
+```ts
+const snapshot = SpotifyPlus.UpNext.get();
+if (snapshot.next.length > 1) SpotifyPlus.UpNext.move(1, 0);
+```
+
+## Parameters
+
+`index`
+
+The zero-based index to move.
+
+`toIndex`
+
+The final zero-based position after removing the occurrence from its old position.

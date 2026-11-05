@@ -29,7 +29,7 @@ type UITargetName =
 ```ts
 type UIOperation = 'replace' | 'before' | 'after' | 'overlay';
 type UISelector = { screen: UITargetName } & (
-    { resourceId: string; composeTag?: never } | { composeTag: string; resourceId?: never }
+    { resourceId: string; composeTag?: never; minVisible?: number } | { composeTag: string; resourceId?: never; minVisible?: never }
 );
 type UITarget = UITargetName | UISelector;
 ```
@@ -82,6 +82,16 @@ interface UIComponentProps {
     readonly NativePart: React.ComponentType<{ id: string }>;
 }
 ```
+
+## UIRoot
+
+```ts
+interface UIRoot extends UIRegistration {
+    render(element: React.ReactNode): void;
+}
+```
+
+`UI.mount()` returns this handle. Call `render()` to update its content and `dispose()` to close it.
 
 ## UIRegistration
 

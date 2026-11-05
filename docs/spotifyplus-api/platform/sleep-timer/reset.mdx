@@ -1,0 +1,25 @@
+---
+sidebar_label: 'reset()'
+---
+
+# Platform.SleepTimer.reset()
+
+Removes your extension's sleep timer menu changes.
+
+## Syntax
+
+```ts
+SpotifyPlus.Platform.SleepTimer.reset(): void
+```
+
+## Examples
+
+The following example shows how an extension can customize the sleep timer.
+
+```ts
+SpotifyPlus.Platform.SleepTimer.reset();
+```
+
+## Remarks
+
+This restores your menu edits and clears your callbacks. It does not cancel an already running timer.

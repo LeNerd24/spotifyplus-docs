@@ -1,0 +1,33 @@
+---
+sidebar_label: 'set()'
+---
+
+# Settings.set()
+
+Changes a Spotify setting.
+
+## Syntax
+
+```ts
+SpotifyPlus.Settings.set(id: string, value: SpotifySettingValue): void
+```
+
+## Examples
+
+The following example shows how an extension can work with Spotify settings.
+
+```ts
+SpotifyPlus.Settings.set('crossfade', true);
+SpotifyPlus.Settings.set('crossfadeTimeSeconds', 8);
+SpotifyPlus.Settings.set('shuffleMode', 'fewer-repeats');
+```
+
+## Parameters
+
+`id`
+
+The setting ID.
+
+`value`
+
+A boolean, number, or string accepted by that setting.

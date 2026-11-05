@@ -1,0 +1,46 @@
+---
+sidebar_label: 'add()'
+---
+
+# Platform.SleepTimer.add()
+
+Adds a duration option to Spotify's sleep timer menu.
+
+## Syntax
+
+```ts
+SpotifyPlus.Platform.SleepTimer.add(duration: number, unit?: SleepTimerUnit): SleepTimerEntry
+```
+
+## Examples
+
+The following example shows how an extension can customize the sleep timer.
+
+```ts
+const entry = SpotifyPlus.Platform.SleepTimer.add(25);
+console.log(entry.id);
+```
+
+## Parameters
+
+`duration`
+
+A duration resolving to a positive whole number of minutes, up to 2,147,483,647 minutes.
+
+`unit`
+
+`minutes` or `hours`. Defaults to `minutes`.
+
+## Returns
+
+`SleepTimerEntry`
+
+The new row, with its generated ID.
+
+## Remarks
+
+This adds a new duration option to the list of sleep timers, which when pressed, will start a timer with whatever duration you added. Custom rows and edits belong to your extension and are removed when it unloads. You can move or hide default rows and your own rows, but cannot edit another extension's rows.
+
+Adding a duration only adds a menu option. Use `start()` to start the timer immediately.
+
+See [Sleep timer types](../../../types/sleep-timer.md).

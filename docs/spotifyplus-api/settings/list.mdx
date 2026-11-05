@@ -1,0 +1,29 @@
+---
+sidebar_label: 'list()'
+---
+
+# Settings.list()
+
+Lists Spotify settings that are currently available.
+
+## Syntax
+
+```ts
+SpotifyPlus.Settings.list(): SpotifySetting[]
+```
+
+## Examples
+
+The following example shows how an extension can work with Spotify settings.
+
+```ts
+for (const setting of SpotifyPlus.Settings.list()) {
+    console.log(setting.id, setting.value, setting.writable);
+}
+```
+
+## Returns
+
+`SpotifySetting[]`
+
+Descriptors containing `id`, `value`, `type`, and `writable`.

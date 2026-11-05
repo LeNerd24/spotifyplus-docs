@@ -9,14 +9,7 @@ Register extension actions in Spotify's menus or open a native menu from custom 
 ## Register an action
 
 ```ts
-new SpotifyPlus.ContextMenu(
-  name: string,
-  onClick: (uri: string) => void,
-  shouldAdd?: (uri: string, contextUri: string) => boolean,
-  disabled?: boolean,
-  types?: 'track' | 'artist' | 'album' | 'playlist' |
-    readonly ('track' | 'artist' | 'album' | 'playlist')[]
-).register()
+new SpotifyPlus.ContextMenu(name: string, onClick: (uri: string) => void, shouldAdd?: (uri: string, contextUri: string) => boolean, disabled?: boolean, types?: 'track' | 'artist' | 'album' | 'playlist' | readonly ('track' | 'artist' | 'album' | 'playlist')[], icon?: ExtensionAsset).register()
 ```
 
 ```ts
@@ -33,6 +26,8 @@ new SpotifyPlus.ContextMenu(
   ['track', 'album'],
 ).register();
 ```
+
+The optional sixth argument is an icon from `SpotifyPlus.Assets.image()`. SVG assets are supported and menu icons are tinted with the current theme, like Spotify's built-in icons.
 
 Arguments are positional. `register()` returns the item; creating an item alone does not register it. Omit `types` to allow every context, including unidentified kinds. An empty array allows none. Disabled items are hidden in the current modern hook.
 

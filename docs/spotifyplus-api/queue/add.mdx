@@ -7,7 +7,7 @@ import Badge from '@site/src/components/badge';
 
 # Queue.add()
 
-Adds one or more items to the playback queue.
+Adds one or more song to the queue.
 
 ## Syntax
 
@@ -36,12 +36,3 @@ SpotifyPlus.toast(`Queued ${track.text}`);
 <Badge>SpotifyUriInput | SpotifyUriInput[]</Badge> <Badge variant="danger">Required</Badge>
 
 One URI or an array of URIs to queue.
-
-## Returns
-
-`void`
-
-Returns after the local queue accepts the items.
-
-
-This is a synchronous local call. It throws if the queue is not ready or Spotify rejects the operation. Edits acknowledge the local queue change; they do not wait for playback on another device.

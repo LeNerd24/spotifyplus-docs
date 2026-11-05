@@ -1,0 +1,30 @@
+---
+sidebar_label: 'get()'
+---
+
+# UpNext.get()
+
+Gets the upcoming context tracks and the current queue revision.
+
+## Syntax
+
+```ts
+SpotifyPlus.UpNext.get(): UpNextSnapshot
+```
+
+## Examples
+
+The following example shows how an extension can work with this section of the queue.
+
+```ts
+const snapshot = SpotifyPlus.UpNext.get();
+for (const [index, entry] of snapshot.next.entries()) {
+    console.log(index, entry.uri, entry.uid);
+}
+```
+
+## Returns
+
+`UpNextSnapshot`
+
+A snapshot containing `revision`, `current`, `next`, and `previous`. `next` contains only upcoming context tracks; `current` and `previous` describe the shared playback state.

@@ -19,7 +19,7 @@ Once your extension is created, you can go check out `manifest.json`. This is wh
     "name": "Example Extension", // The name of your extension
     "description": "Creating extensions is fun!", // A description of what your extension does
     "version": "1.0.0", // What version your extension is
-    "authors": [ // An array of authors. Their name and a link to their GitHub (or other) profile
+    "author": [ // An array of authors. Their name and a link to their GitHub (or other) profile
         {
             "name": "Author",
             "url": "https://www.github.com/Author"
@@ -36,5 +36,7 @@ Once your extension is created, you can go check out `manifest.json`. This is wh
     }
 }
 ```
+
+You can use API version 2 for now. More helpful information about versions will come out when future versions release.
 
 Now your extension is all set up! Have fun building!
