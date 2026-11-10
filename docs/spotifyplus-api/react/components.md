@@ -214,7 +214,7 @@ The component name must match a component registered by the native plugin.
 You can then use it like any other React component:
 
 ```tsx
-<ArtworkGradient topColor="#402060" bottomColor="#101010" />
+// <ArtworkGradient topColor="#402060" bottomColor="#101010" />
 ```
 
 ## Custom drawing
@@ -230,8 +230,6 @@ For interfaces that need custom graphics, Spotify Plus provides three drawing co
 These components support shapes, paths, text, images, gradients, transforms, clipping, and shadows.
 
 They also provide touch events, frame callbacks, and size change notifications.
-
-For animations that update frequently, consider using [native animations](./animations.md) to avoid sending every frame update through JavaScript.
 
 ## Styling
 
